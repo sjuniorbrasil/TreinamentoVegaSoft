@@ -177,12 +177,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Medico.cs" />
-    <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -256,6 +252,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sergio.Saude.Dominio\Sergio.Saude.Dominio.csproj">
+      <Project>{3a53f12a-ce13-4f5d-b5e1-c79652dd9fc8}</Project>
+      <Name>Sergio.Saude.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sergio.Saude.Repositorio\Sergio.Saude.Repositorio.csproj">
+      <Project>{c093cb26-2112-47f8-a764-32147ed7c64e}</Project>
+      <Name>Sergio.Saude.Repositorio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
