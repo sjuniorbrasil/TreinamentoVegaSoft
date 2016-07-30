@@ -7,7 +7,7 @@
 <h2>Lista Médico</h2>
 
 <p>
-    @Html.ActionLink("Novo", "NovoMedico")
+    @Html.ActionLink("Novo", "Incluir")
 </p>
 <table class="table table-striped">
     <tr>
@@ -42,9 +42,9 @@
                 @Html.DisplayFor(modelItem => item.Especialidade)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Excluir", "Delete", new { id = item.Id })
+                @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.Id })
             </td>
         </tr>
     }

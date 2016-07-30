@@ -13,8 +13,8 @@ namespace Sergio.Saude.Web.Controllers
         // GET: Funcionario
         public ActionResult Index()
         {
-            
-            return View(Dados.ListaFuncionario());
+            Dados db = new Dados();
+            return View(db.ListaFuncionario());
         }
         //public static List<Funcionario> ListaFuncionario()
         //{

@@ -10,7 +10,20 @@ namespace Sergio.Saude.Repositorio
 {
     public class Dados
     {
-        public static List<Cliente> ListaCliente()
+        static List<Medico> medicos = new List<Medico>();
+        public Dados()
+        {
+            if (medicos.Count == 0)
+            {
+                medicos.Add(new Medico { Id = 1, Nome = "João", Crm = "11111" });
+                medicos.Add(new Medico { Id = 2, Nome = "zé", Crm = "11111" });
+                medicos.Add(new Medico { Id = 3, Nome = "mario", Crm = "11111" });
+                medicos.Add(new Medico { Id = 4, Nome = "Maira", Crm = "11111" });
+                medicos.Add(new Medico { Id = 5, Nome = "Sergio", Crm = "11111" });
+            }
+
+        }
+        public List<Cliente> ListaCliente()
         {
             List<Cliente> clientes = new List<Cliente>();
             clientes.Add(new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" });
@@ -19,20 +32,22 @@ namespace Sergio.Saude.Repositorio
             clientes.Add(new Cliente { Id = 4, Nome = "Maria", Cnpj = "06297632000145", Email = "teste@hotmail.com" });
             return clientes;
         }
-        public static List<Medico> ListaMedicos()
+        public List<Medico> ListaMedicos()
         {
-            List<Medico> medicos = new List<Medico>();
-            medicos.Add(new Medico { Id = 1, Nome = "João", Crm = "11111" });
-            medicos.Add(new Medico { Id = 2, Nome = "zé", Crm = "11111" });
-            medicos.Add(new Medico { Id = 3, Nome = "mario", Crm = "11111" });
-            medicos.Add(new Medico { Id = 4, Nome = "Maira", Crm = "11111" });
-            medicos.Add(new Medico { Id = 5, Nome = "Sergio", Crm = "11111" });
+
             return medicos;
         }
-        public static List<Funcionario> ListaFuncionario()
+
+        public void IncluirMedico(Medico medico)
+        {
+            medicos.Add(medico);
+
+        }
+
+        public List<Funcionario> ListaFuncionario()
         {
             List<Funcionario> funcionarios = new List<Funcionario>();
-            funcionarios.Add(new Funcionario { Id = 1, Nome = "João", Email = "teste@hotmail.com", Funcao = "teste", cliente= new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
+            funcionarios.Add(new Funcionario { Id = 1, Nome = "João", Email = "teste@hotmail.com", Funcao = "teste", cliente = new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
             funcionarios.Add(new Funcionario { Id = 2, Nome = "zé", Email = "teste@hotmail.com", Funcao = "teste" });
             funcionarios.Add(new Funcionario { Id = 3, Nome = "mario", Email = "teste@hotmail.com", Funcao = "teste" });
             funcionarios.Add(new Funcionario { Id = 4, Nome = "Maira", Email = "teste@hotmail.com", Funcao = "teste" });

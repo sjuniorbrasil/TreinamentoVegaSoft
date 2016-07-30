@@ -14,9 +14,10 @@ namespace Sergio.Saude.Web.Controllers
         // GET: Medico
         public ActionResult Index()
         {
+            Dados db = new Dados();
            
-            return View(Dados.ListaMedicos());
-        }      
+            return View(db.ListaMedicos());
+        }
 
         //private static List<Medico> ListaMedicos()
         //{
@@ -28,5 +29,33 @@ namespace Sergio.Saude.Web.Controllers
         //    medicos.Add(new Medico {Id = 5, Nome = "Sergio", Crm = "11111"});
         //    return medicos;
         //}
+        public ActionResult Incluir()
+        {
+            Medico medico = new Medico();
+
+            return View(medico);
+        }
+       [HttpPost]
+        public ActionResult Incluir(Medico medicos)
+        {
+            try
+            {
+                Dados db = new Dados();
+
+                db.IncluirMedico(medicos);
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
+            return View();
+        }
+
+
     }
 }

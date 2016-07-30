@@ -15,8 +15,9 @@ namespace Sergio.Saude.Web.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+            Dados Db = new Dados();
             
-            return View(Dados.ListaCliente());
+            return View(Db.ListaCliente());
         }
         //private static List<Cliente> ListaCliente()
         //{
