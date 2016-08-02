@@ -11,11 +11,11 @@ namespace Sergio.Saude.Web.Controllers
 {
     public class MedicoController : Controller
     {
+        Dados db = new Dados();
+        
         // GET: Medico
         public ActionResult Index()
         {
-            Dados db = new Dados();
-           
             return View(db.ListaMedicos());
         }
 
@@ -33,16 +33,17 @@ namespace Sergio.Saude.Web.Controllers
         {
             Medico medico = new Medico();
 
+
             return View(medico);
         }
        [HttpPost]
-        public ActionResult Incluir(Medico medicos)
+        public ActionResult Incluir(Medico medico)
         {
             try
             {
-                Dados db = new Dados();
+                medico.Id = db.ListaMedicos().Max(x => x.Id) + 1;
 
-                db.IncluirMedico(medicos);
+                db.IncluirMedico(medico);
                 return RedirectToAction("Index");
 
             }
@@ -52,9 +53,52 @@ namespace Sergio.Saude.Web.Controllers
                 throw;
             }
             
-
-            return View();
+            
         }
+
+        public ActionResult Alterar(int id)
+        {
+
+            var medico = db.ListaMedicos().Where(x => x.Id == id).FirstOrDefault();
+            return View(medico);
+
+        }
+
+        [HttpPost]
+        public ActionResult Alterar(Medico medico)
+        {
+            try
+            {
+                
+
+                db.AlterarMedico(medico);
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+        public ActionResult Excluir(int id)
+        {
+
+            var medico = db.ListaMedicos().Where(x => x.Id == id).FirstOrDefault();
+            return View(medico);
+
+        }
+        [HttpPost, ActionName("Excluir")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmarExclusao(Medico medico)
+        {
+            
+            db.ExcluirMedico(medico);
+            return RedirectToAction("Index");
+        }
+
 
 
     }

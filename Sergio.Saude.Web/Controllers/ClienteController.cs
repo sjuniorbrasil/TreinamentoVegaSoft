@@ -8,6 +8,7 @@ using Sergio.Saude.Dominio;
 using Sergio.Saude.Repositorio;
 
 
+
 namespace Sergio.Saude.Web.Controllers
 {
     public class ClienteController : Controller
@@ -28,5 +29,30 @@ namespace Sergio.Saude.Web.Controllers
         //    clientes.Add(new Cliente { Id = 4, Nome = "Maria", Cnpj = "06297632000145", Email = "teste@hotmail.com" });
         //    return clientes;
         //}
+
+        public ActionResult Incluir()
+        {
+            Cliente cliente = new Cliente();
+
+            return View(cliente);
+        }
+        [HttpPost]
+        public ActionResult Incluir(Cliente clientes)
+        {
+            try
+            {
+                Dados db = new Dados();
+                db.IncluirCliente(clientes);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
+            ;
+        }
     }
 }

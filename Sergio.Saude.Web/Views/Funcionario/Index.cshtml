@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Sergio.Saude.Dominio.Funcionario>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inicio";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo", "Incluir")
 </p>
 <table class="table">
     <tr>
@@ -46,9 +46,9 @@
         </td>
        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Excluir", new { id=item.Id })
         </td>
     </tr>
 }

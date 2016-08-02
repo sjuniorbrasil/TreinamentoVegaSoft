@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Sergio.Saude.Dominio;
 
 namespace Sergio.Saude.Web.Models
 {
@@ -20,14 +21,22 @@ namespace Sergio.Saude.Web.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        DbSet<Funcionario> Funcionarios { get; set; }
+
+        DbSet<Medico> Medicos { get; set; }
+        DbSet<Cliente> Clientes { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<Sergio.Saude.Web.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using Sergio.Saude.Web.Models;
 using Sergio.Saude.Repositorio;
+using Sergio.Saude.Dominio;
 
 namespace Sergio.Saude.Web.Controllers
 {
     public class FuncionarioController : Controller
     {
+        Funcionario funcionario = new Funcionario();
+        Dados db = new Dados();
         // GET: Funcionario
         public ActionResult Index()
         {
@@ -26,5 +29,43 @@ namespace Sergio.Saude.Web.Controllers
         //    funcionarios.Add(new Funcionario { Id = 5, Nome = "Sergio", Email = "teste@hotmail.com", Funcao = "teste" });
         //    return funcionarios;
         //}
+        public ActionResult Incluir()
+        {
+            
+            return View(funcionario);
+        }
+        [HttpPost]
+        public ActionResult Incluir(Funcionario funcionarios)
+        {
+            try
+            {
+                
+                db.IncluirFuncionario(funcionarios);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        //public ActionResult Excluir()
+        //{
+            
+        //    return View(funcionario);
+        //}
+        //[HttpDelete]
+        //public ActionResult Excluir(Funcionario funcionarios)
+        //{
+
+        //    try
+        //    {
+                
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        }
     }
-}
