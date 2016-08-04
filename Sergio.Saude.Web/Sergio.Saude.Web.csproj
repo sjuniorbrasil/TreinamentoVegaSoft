@@ -177,15 +177,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608020018190_inicio.cs" />
-    <Compile Include="Migrations\201608020018190_inicio.Designer.cs">
-      <DependentUpon>201608020018190_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201608032353377_primeiro.cs" />
+    <Compile Include="Migrations\201608032353377_primeiro.Designer.cs">
+      <DependentUpon>201608032353377_primeiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608040006159_terceiro.cs" />
+    <Compile Include="Migrations\201608040006159_terceiro.Designer.cs">
+      <DependentUpon>201608040006159_terceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608040031010_quarto.cs" />
+    <Compile Include="Migrations\201608040031010_quarto.Designer.cs">
+      <DependentUpon>201608040031010_quarto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +210,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -280,8 +297,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608020018190_inicio.resx">
-      <DependentUpon>201608020018190_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608032353377_primeiro.resx">
+      <DependentUpon>201608032353377_primeiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608040006159_terceiro.resx">
+      <DependentUpon>201608040006159_terceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608040031010_quarto.resx">
+      <DependentUpon>201608040031010_quarto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

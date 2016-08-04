@@ -7,13 +7,13 @@ namespace Sergio.Saude.Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class inicio : IMigrationMetadata
+    public sealed partial class terceiro : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(inicio));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(terceiro));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608020018190_inicio"; }
+            get { return "201608040006159_terceiro"; }
         }
         
         string IMigrationMetadata.Source

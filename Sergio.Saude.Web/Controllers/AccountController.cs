@@ -139,6 +139,7 @@ namespace Sergio.Saude.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //passar o viewbagclienteID
             return View();
         }
 
@@ -151,7 +152,7 @@ namespace Sergio.Saude.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Cidade = model.Cidade, ClienteId = model.ClienteId};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

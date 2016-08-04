@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -10,6 +11,11 @@ namespace Sergio.Saude.Web.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string Cidade { get; set; }
+
+        public int? ClienteId { get; set; }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -21,13 +27,10 @@ namespace Sergio.Saude.Web.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        DbSet<Funcionario> Funcionarios { get; set; }
-
-        DbSet<Medico> Medicos { get; set; }
-        DbSet<Cliente> Clientes { get; set; }
+      
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SaudeWebContexto", throwIfV1Schema: false)
         {
             
         }
@@ -36,6 +39,8 @@ namespace Sergio.Saude.Web.Models
         {
             return new ApplicationDbContext();
         }
+
+       
 
         //public System.Data.Entity.DbSet<Sergio.Saude.Web.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
