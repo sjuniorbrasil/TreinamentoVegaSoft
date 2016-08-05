@@ -5,11 +5,12 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sergio.Saude.Dominio;
 
 
-namespace Sergio.Saude.Dominio.Contexto
+namespace Sergio.Saude.Repositorio.Contexto
 {
-    public class SaudeWebDbContexto: DbContext
+    public class SaudeWebDbContexto : DbContext
     {
         DbSet<Funcionario> Funcionarios { get; set; }
 
@@ -18,8 +19,9 @@ namespace Sergio.Saude.Dominio.Contexto
 
         public SaudeWebDbContexto() : base("SaudeWebContexto")
         {
-         
-                 
+            //CarregaBancoSistema();
+
+
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,7 +34,24 @@ namespace Sergio.Saude.Dominio.Contexto
             modelBuilder.Properties<string>().Configure(p => p.HasColumnType("varchar"));
 
             modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(150));
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+        }
+
+        private void CarregaBancoSistema()
+        {
+            SaudeWebDbContexto contexto = new SaudeWebDbContexto();
+            if (contexto.Clientes.Count() == 0)
+            {
+                Dados dados = new Dados();
+
+                var clientes = dados.ListaCliente();
+                var medicos = dados.ListaMedicos();
+                var funcionarios = dados.ListaFuncionario();
+                medicos.ForEach(m => contexto.Medicos.Add(m));//cada registro é um item da coleção
+                clientes.ForEach(m => contexto.Clientes.Add(m));
+                funcionarios.ForEach(m => contexto.Funcionarios.Add(m));
+                contexto.SaveChanges();
+            }
         }
     }
 }

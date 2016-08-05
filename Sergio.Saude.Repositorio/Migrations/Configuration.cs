@@ -1,18 +1,18 @@
-namespace Sergio.Saude.Dominio.Migrations
+namespace Sergio.Saude.Repositorio.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Sergio.Saude.Dominio.Contexto.SaudeWebDbContexto>
+    internal sealed class Configuration : DbMigrationsConfiguration<Sergio.Saude.Repositorio.Contexto.SaudeWebDbContexto>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Sergio.Saude.Dominio.Contexto.SaudeWebDbContexto context)
+        protected override void Seed(Sergio.Saude.Repositorio.Contexto.SaudeWebDbContexto context)
         {
             //  This method will be called after migrating to the latest version.
 
