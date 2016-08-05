@@ -15,6 +15,16 @@ namespace Sergio.Saude.Repositorio
         static List<Medico> medicos = new List<Medico>();
         public Dados()
         {
+            // foi alterado a estrutura de ifs...
+            // Erro de lógica, tem que avaliar cada coleção...
+            // são condições separadas...
+
+            // tambem poderia inverter a logica e verificar apenas uma coleção...
+            // se não ouver dados nela...deve popular todas as coleções...
+            // já que essa rotina rodará apenas uma vez na criação bd.
+
+
+
             if (medicos.Count == 0)
             {
                 medicos.Add(new Medico { Id = 1, Nome = "João", Crm = "11111" });
@@ -23,7 +33,8 @@ namespace Sergio.Saude.Repositorio
                 medicos.Add(new Medico { Id = 4, Nome = "Maira", Crm = "11111" });
                 medicos.Add(new Medico { Id = 5, Nome = "Sergio", Crm = "11111" });
             }
-            else if(clientes.Count == 0)
+            //else if(clientes.Count == 0)
+            if (clientes.Count == 0)
             {
                 clientes.Add(new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" });
                 clientes.Add(new Cliente { Id = 2, Nome = "Joao", Cnpj = "06297632000145", Email = "teste@hotmail.com" });
@@ -31,7 +42,8 @@ namespace Sergio.Saude.Repositorio
                 clientes.Add(new Cliente { Id = 4, Nome = "Maria", Cnpj = "06297632000145", Email = "teste@hotmail.com" });
 
             }
-            else if(funcionarios.Count == 0)
+            //else if(funcionarios.Count == 0)
+            if (funcionarios.Count == 0)
             {
                 funcionarios.Add(new Funcionario { Id = 1, Nome = "João", Email = "teste@hotmail.com", Funcao = "teste", cliente = new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
                 funcionarios.Add(new Funcionario { Id = 2, Nome = "zé", Email = "teste@hotmail.com", Funcao = "teste" });

@@ -9,6 +9,7 @@ using Sergio.Saude.Repositorio;
 
 namespace Sergio.Saude.Web.Controllers
 {
+    [Authorize]
     public class MedicoController : Controller
     {
         Dados db = new Dados();

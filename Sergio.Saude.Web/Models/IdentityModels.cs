@@ -32,7 +32,7 @@ namespace Sergio.Saude.Web.Models
         public ApplicationDbContext()
             : base("SaudeWebContexto", throwIfV1Schema: false)
         {
-            
+            Database.SetInitializer(new PreparaDb());
         }
 
         public static ApplicationDbContext Create()

@@ -1,9 +1,9 @@
-namespace Sergio.Saude.Dominio.Migrations
+namespace Sergio.Saude.Repositorio.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class segundo : DbMigration
+    public partial class revisaodb : DbMigration
     {
         public override void Up()
         {

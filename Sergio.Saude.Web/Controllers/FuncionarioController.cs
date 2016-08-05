@@ -9,6 +9,7 @@ using Sergio.Saude.Dominio;
 
 namespace Sergio.Saude.Web.Controllers
 {
+    [Authorize]
     public class FuncionarioController : Controller
     {
         Funcionario funcionario = new Funcionario();

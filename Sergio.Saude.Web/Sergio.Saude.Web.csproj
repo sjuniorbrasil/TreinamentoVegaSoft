@@ -174,6 +174,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedicoController.cs" />
+    <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,10 +190,19 @@
     <Compile Include="Migrations\201608040031010_quarto.Designer.cs">
       <DependentUpon>201608040031010_quarto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608042323394_popula.cs" />
+    <Compile Include="Migrations\201608042323394_popula.Designer.cs">
+      <DependentUpon>201608042323394_popula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608051450027_dadosaudeweb.cs" />
+    <Compile Include="Migrations\201608051450027_dadosaudeweb.Designer.cs">
+      <DependentUpon>201608051450027_dadosaudeweb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PreparaDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -226,7 +236,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -274,6 +286,7 @@
     <Content Include="Views\ApplicationUsers\Details.cshtml" />
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
+    <Content Include="Views\Teste\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +318,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608040031010_quarto.resx">
       <DependentUpon>201608040031010_quarto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608042323394_popula.resx">
+      <DependentUpon>201608042323394_popula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608051450027_dadosaudeweb.resx">
+      <DependentUpon>201608051450027_dadosaudeweb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
