@@ -8,6 +8,7 @@ namespace Sergio.Saude.Dominio
 {
     public class Medico : Pessoa
         {
+
             public string Crm { get; set; }
 
             public string Especialidade { get; set; }

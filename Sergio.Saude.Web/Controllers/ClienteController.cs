@@ -6,20 +6,22 @@ using System.Web.Mvc;
 using Sergio.Saude.Web.Models;
 using Sergio.Saude.Dominio;
 using Sergio.Saude.Repositorio;
-
+using Sergio.Saude.Repositorio.Contexto;
 
 
 namespace Sergio.Saude.Web.Controllers
 {
     public class ClienteController : Controller
     {
-        [Authorize]
+        SaudeWebDbContexto db = new SaudeWebDbContexto();
+        //[Authorize]
         // GET: Cliente
         public ActionResult Index()
         {
-            Dados Db = new Dados();
+            //Dados Db = new Dados();
+
             
-            return View(Db.ListaCliente());
+            return View(db.Clientes);
         }
         //private static List<Cliente> ListaCliente()
         //{

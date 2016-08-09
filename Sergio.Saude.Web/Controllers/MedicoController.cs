@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sergio.Saude.Web.Models;
 using Sergio.Saude.Dominio;
 using Sergio.Saude.Repositorio;
+using Sergio.Saude.Repositorio.Contexto;
+using Sergio.Saude.Web.ViewModel;
 
 namespace Sergio.Saude.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class MedicoController : Controller
     {
-        Dados db = new Dados();
+        SaudeWebDbContexto db = new SaudeWebDbContexto();
+        //Dados db = new Dados();
         
         // GET: Medico
         public ActionResult Index()
         {
-            return View(db.ListaMedicos());
+            return View(db.Medicos);
         }
 
         //private static List<Medico> ListaMedicos()
@@ -32,19 +36,21 @@ namespace Sergio.Saude.Web.Controllers
         //}
         public ActionResult Incluir()
         {
-            Medico medico = new Medico();
+            
+            var model = new MedicoViewModel();
+           
 
-
-            return View(medico);
+            return View(model);
         }
        [HttpPost]
         public ActionResult Incluir(Medico medico)
         {
             try
             {
-                medico.Id = db.ListaMedicos().Max(x => x.Id) + 1;
+                medico.Id = db.Clientes.Max(x => x.Id) + 1;
 
-                db.IncluirMedico(medico);
+                db.Medicos.Add(medico);
+                db.SaveChanges();
                 return RedirectToAction("Index");
 
             }
@@ -59,9 +65,17 @@ namespace Sergio.Saude.Web.Controllers
 
         public ActionResult Alterar(int id)
         {
+            //var medico = db.Medicos.Where(x => x.Id == id).FirstOrDefault();
 
-            var medico = db.ListaMedicos().Where(x => x.Id == id).FirstOrDefault();
-            return View(medico);
+            var medico = db.Medicos.FirstOrDefault(x => x.Id == id);
+            
+            var model = new MedicoViewModel();
+            model.Id = medico.Id;
+            model.Nome = medico.Nome.ToUpper();
+            model.Crm = medico.Crm;
+            model.Email = medico.Email;
+            model.Especialidade = medico.Especialidade;
+            return View(model);
 
         }
 
@@ -71,8 +85,10 @@ namespace Sergio.Saude.Web.Controllers
             try
             {
                 
-
-                db.AlterarMedico(medico);
+                
+                db.Entry(medico).State = EntityState.Modified;
+                db.SaveChanges();
+                
                 return RedirectToAction("Index");
 
             }
@@ -87,7 +103,8 @@ namespace Sergio.Saude.Web.Controllers
         public ActionResult Excluir(int id)
         {
 
-            var medico = db.ListaMedicos().Where(x => x.Id == id).FirstOrDefault();
+            //var medico = db.Medicos.Where(x => x.Id == id).FirstOrDefault();
+            var medico = db.Medicos.FirstOrDefault(x => x.Id == id);
             return View(medico);
 
         }
@@ -95,8 +112,19 @@ namespace Sergio.Saude.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ConfirmarExclusao(Medico medico)
         {
+            try
+            {
+                var excluir = db.Medicos.FirstOrDefault(x => x.Id == medico.Id);
+                db.Medicos.Remove(excluir);
+                db.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
             
-            db.ExcluirMedico(medico);
             return RedirectToAction("Index");
         }
 
