@@ -46,10 +46,10 @@ namespace Sergio.Saude.Repositorio
             if (funcionarios.Count == 0)
             {
                 funcionarios.Add(new Funcionario { Id = 1, Nome = "João", Email = "teste@hotmail.com", Funcao = "teste", cliente = new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
-                funcionarios.Add(new Funcionario { Id = 2, Nome = "zé", Email = "teste@hotmail.com", Funcao = "teste" });
-                funcionarios.Add(new Funcionario { Id = 3, Nome = "mario", Email = "teste@hotmail.com", Funcao = "teste" });
-                funcionarios.Add(new Funcionario { Id = 4, Nome = "Maira", Email = "teste@hotmail.com", Funcao = "teste" });
-                funcionarios.Add(new Funcionario { Id = 5, Nome = "Sergio", Email = "teste@hotmail.com", Funcao = "teste" });
+                funcionarios.Add(new Funcionario { Id = 2, Nome = "zé", Email = "teste@hotmail.com", Funcao = "teste", cliente = new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
+                funcionarios.Add(new Funcionario { Id = 3, Nome = "mario", Email = "teste@hotmail.com", Funcao = "teste", cliente = new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
+                funcionarios.Add(new Funcionario { Id = 4, Nome = "Maira", Email = "teste@hotmail.com", Funcao = "teste", cliente = new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
+                funcionarios.Add(new Funcionario { Id = 5, Nome = "Sergio", Email = "teste@hotmail.com", Funcao = "teste", cliente = new Cliente { Id = 1, Nome = "Sergio", Cnpj = "06297632000145", Email = "teste@hotmail.com" } });
 
             }
 

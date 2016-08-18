@@ -3,7 +3,7 @@ namespace Sergio.Saude.Repositorio.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class revisaodb : DbMigration
+    public partial class _1 : DbMigration
     {
         public override void Up()
         {
@@ -24,7 +24,7 @@ namespace Sergio.Saude.Repositorio.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Funcao = c.String(maxLength: 150, unicode: false),
-                        Nome = c.String(maxLength: 150, unicode: false),
+                        Nome = c.String(nullable: false, maxLength: 100, unicode: false),
                         Email = c.String(maxLength: 150, unicode: false),
                         cliente_Id = c.Int(),
                     })
@@ -39,7 +39,7 @@ namespace Sergio.Saude.Repositorio.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Crm = c.String(maxLength: 150, unicode: false),
                         Especialidade = c.String(maxLength: 150, unicode: false),
-                        Nome = c.String(maxLength: 150, unicode: false),
+                        Nome = c.String(nullable: false, maxLength: 100, unicode: false),
                         Email = c.String(maxLength: 150, unicode: false),
                     })
                 .PrimaryKey(t => t.Id);

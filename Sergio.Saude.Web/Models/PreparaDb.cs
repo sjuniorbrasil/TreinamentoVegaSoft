@@ -18,7 +18,7 @@ namespace Sergio.Saude.Web.Models
             try
             {
                 CriarUsuario(contexto);
-                CarregaBancoSistema(db);
+                //CarregaBancoSistema(db);
             }
             catch (Exception E)
             {
@@ -75,11 +75,16 @@ namespace Sergio.Saude.Web.Models
             Dados dados = new Dados();
 
             var clientes = dados.ListaCliente();
-            var medicos = dados.ListaMedicos();
-            var funcionarios = dados.ListaFuncionario();
+          
 
+            var medicos = dados.ListaMedicos();
+            contextoSaudeWeb.Commit();
+            var funcionarios = dados.ListaFuncionario();
+            contextoSaudeWeb.Commit();
             medicos.ForEach(m => contextoSaudeWeb.Medicos.Add(m));//cada registro é um item da coleção
+            contextoSaudeWeb.Commit();
             clientes.ForEach(m => contextoSaudeWeb.Clientes.Add(m));
+            contextoSaudeWeb.Commit();
             funcionarios.ForEach(m => contextoSaudeWeb.Funcionarios.Add(m));
             contextoSaudeWeb.SaveChanges();
             

@@ -49,14 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracao\FuncionarioConfiguracao.cs" />
+    <Compile Include="Configuracao\MedicoConfiguracao.cs" />
     <Compile Include="Contexto\SaudeWebDbContexto.cs" />
     <Compile Include="Dados.cs" />
-    <Compile Include="Migrations\201608051452270_revisaodb.cs" />
-    <Compile Include="Migrations\201608051452270_revisaodb.Designer.cs">
-      <DependentUpon>201608051452270_revisaodb.cs</DependentUpon>
+    <Compile Include="Interface\IRepositorio.cs" />
+    <Compile Include="Interface\IUnitOfWok.cs" />
+    <Compile Include="Migrations\201608172222329_1.cs" />
+    <Compile Include="Migrations\201608172222329_1.Designer.cs">
+      <DependentUpon>201608172222329_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio.cs" />
+    <Compile Include="RepositorioCliente.cs" />
+    <Compile Include="RepositorioFuncionario.cs" />
+    <Compile Include="RepositorioMedico.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sergio.Saude.Dominio\Sergio.Saude.Dominio.csproj">
@@ -69,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608051452270_revisaodb.resx">
-      <DependentUpon>201608051452270_revisaodb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608172222329_1.resx">
+      <DependentUpon>201608172222329_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

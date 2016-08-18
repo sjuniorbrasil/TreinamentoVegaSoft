@@ -178,27 +178,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608032353377_primeiro.cs" />
-    <Compile Include="Migrations\201608032353377_primeiro.Designer.cs">
-      <DependentUpon>201608032353377_primeiro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608040006159_terceiro.cs" />
-    <Compile Include="Migrations\201608040006159_terceiro.Designer.cs">
-      <DependentUpon>201608040006159_terceiro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608040031010_quarto.cs" />
-    <Compile Include="Migrations\201608040031010_quarto.Designer.cs">
-      <DependentUpon>201608040031010_quarto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608042323394_popula.cs" />
-    <Compile Include="Migrations\201608042323394_popula.Designer.cs">
-      <DependentUpon>201608042323394_popula.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608051450027_dadosaudeweb.cs" />
-    <Compile Include="Migrations\201608051450027_dadosaudeweb.Designer.cs">
-      <DependentUpon>201608051450027_dadosaudeweb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -309,23 +288,6 @@
       <Project>{c093cb26-2112-47f8-a764-32147ed7c64e}</Project>
       <Name>Sergio.Saude.Repositorio</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608032353377_primeiro.resx">
-      <DependentUpon>201608032353377_primeiro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608040006159_terceiro.resx">
-      <DependentUpon>201608040006159_terceiro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608040031010_quarto.resx">
-      <DependentUpon>201608040031010_quarto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608042323394_popula.resx">
-      <DependentUpon>201608042323394_popula.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608051450027_dadosaudeweb.resx">
-      <DependentUpon>201608051450027_dadosaudeweb.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

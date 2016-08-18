@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sergio.Saude.Dominio;
-
+using Sergio.Saude.Repositorio.Interface;
+using Sergio.Saude.Repositorio.Configuracao;
 
 namespace Sergio.Saude.Repositorio.Contexto
 {
-    public class SaudeWebDbContexto : DbContext
+    public class SaudeWebDbContexto : DbContext, IUnitOfWok
     {
         // foi alterado os acessores.... para public, estava usando o default
         public DbSet<Funcionario> Funcionarios { get; set; }
@@ -35,7 +37,29 @@ namespace Sergio.Saude.Repositorio.Contexto
             modelBuilder.Properties<string>().Configure(p => p.HasColumnType("varchar"));
 
             modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(150));
+
             //base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.Add(new MedicoConfiguracao());
+            modelBuilder.Configurations.Add(new FuncionarioConfiguracao());//map mapeamento
+        }
+
+        public int Commit()
+        {
+            try
+            {
+                return SaveChanges();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception("Falha de banco de dados" + erro.Message);
+            }
+        }
+
+        public void Rollback()
+        {
+            ChangeTracker.Entries().ToList().ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
         //private void CarregaBancoSistema()

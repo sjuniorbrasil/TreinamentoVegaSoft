@@ -10,18 +10,27 @@ using Sergio.Saude.Repositorio;
 using Sergio.Saude.Repositorio.Contexto;
 using Sergio.Saude.Web.ViewModel;
 
+
 namespace Sergio.Saude.Web.Controllers
 {
     //[Authorize]
     public class MedicoController : Controller
     {
-        SaudeWebDbContexto db = new SaudeWebDbContexto();
+        //SaudeWebDbContexto db = new SaudeWebDbContexto();
         //Dados db = new Dados();
-        
+        private RepositorioMedico _repositorio;
+        private SaudeWebDbContexto _contexto;
+        public MedicoController()
+        {
+            _contexto = new SaudeWebDbContexto();
+            _repositorio = new RepositorioMedico(_contexto);
+
+        }
+
         // GET: Medico
         public ActionResult Index()
         {
-            return View(db.Medicos);
+            return View(_repositorio.ObterTodos());
         }
 
         //private static List<Medico> ListaMedicos()
@@ -36,39 +45,60 @@ namespace Sergio.Saude.Web.Controllers
         //}
         public ActionResult Incluir()
         {
-            
-            var model = new MedicoViewModel();
-           
 
+            var model = new MedicoViewModel();
             return View(model);
         }
-       [HttpPost]
-        public ActionResult Incluir(Medico medico)
+
+
+
+        [HttpPost]
+        public ActionResult Incluir(MedicoViewModel medicoVm)
         {
-            try
-            {
-                medico.Id = db.Clientes.Max(x => x.Id) + 1;
 
-                db.Medicos.Add(medico);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (_repositorio.ObterTodos().Count() > 0)
+                    {
+                        medicoVm.Id = _repositorio.ObterTodos().Max(x => x.Id) + 1;
+
+                    }
+                    Medico medico = new Medico();
+                    medico.Id = medicoVm.Id;
+                    medico.Nome = medicoVm.Nome;
+                    medico.Crm = medicoVm.Crm;
+                    medico.Email = medicoVm.Email;
+                    _repositorio.Inserir(medico);
+                    _contexto.Commit();
+
+                    //db.Medicos.Add(medico);
+                    //db.Commit();
+
+                }
+                catch (Exception e)
+                {
+                    _contexto.Rollback();
+                    throw new Exception(e.Message);
+
+
+                }
 
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            
-            
+            return RedirectToAction("Index");
         }
+
+
+
+
 
         public ActionResult Alterar(int id)
         {
             //var medico = db.Medicos.Where(x => x.Id == id).FirstOrDefault();
 
-            var medico = db.Medicos.FirstOrDefault(x => x.Id == id);
-            
+            var medico = _repositorio.Obter(x => x.Id == id);
+
             var model = new MedicoViewModel();
             model.Id = medico.Id;
             model.Nome = medico.Nome.ToUpper();
@@ -80,22 +110,30 @@ namespace Sergio.Saude.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Alterar(Medico medico)
+        public ActionResult Alterar(MedicoViewModel medicoVm)
         {
             try
             {
-                
-                
-                db.Entry(medico).State = EntityState.Modified;
-                db.SaveChanges();
-                
+
+
+                //db.Entry(medico).State = EntityState.Modified;
+                //db.SaveChanges();
+                var model = new Medico();
+                model.Id = medicoVm.Id;
+                model.Nome = medicoVm.Nome.ToUpper();
+                model.Crm = medicoVm.Crm;
+                model.Email = medicoVm.Email;
+                model.Especialidade = medicoVm.Especialidade;
+                _repositorio.Atualizar(model);
+                _contexto.Commit();
+
                 return RedirectToAction("Index");
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                _contexto.Rollback();
+                throw new Exception(e.Message);
             }
 
 
@@ -104,7 +142,7 @@ namespace Sergio.Saude.Web.Controllers
         {
 
             //var medico = db.Medicos.Where(x => x.Id == id).FirstOrDefault();
-            var medico = db.Medicos.FirstOrDefault(x => x.Id == id);
+            var medico = _repositorio.Obter(x => x.Id == id);
             return View(medico);
 
         }
@@ -114,17 +152,20 @@ namespace Sergio.Saude.Web.Controllers
         {
             try
             {
-                var excluir = db.Medicos.FirstOrDefault(x => x.Id == medico.Id);
-                db.Medicos.Remove(excluir);
-                db.SaveChanges();
+                 var excluir = _repositorio.Obter(x => x.Id == medico.Id);
+                _repositorio.Excluir(excluir);
+                _contexto.Commit();
+                //db.Medicos.Remove(medico);
+                //db.SaveChanges();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                _contexto.Rollback();
+                throw new Exception(e.Message);
                 
-                throw;
             }
-            
+
             return RedirectToAction("Index");
         }
 
