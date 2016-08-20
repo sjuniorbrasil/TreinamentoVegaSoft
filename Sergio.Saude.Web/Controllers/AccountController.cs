@@ -9,12 +9,17 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Sergio.Saude.Web.Models;
+using Sergio.Saude.Repositorio.Contexto;
+using Sergio.Saude.Repositorio;
+using Sergio.Saude.Dominio;
 
 namespace Sergio.Saude.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : Controller  
     {
+
+        
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -139,7 +144,12 @@ namespace Sergio.Saude.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            
+            SaudeWebDbContexto contexto = new SaudeWebDbContexto();
+            RepositorioCliente repositorio = new RepositorioCliente(contexto);
             //passar o viewbagclienteID
+            var busca = repositorio.ObterTodos().Select(x => new { Id = x.Id, Nome = x.Nome });
+            ViewBag.Clientes =new SelectList(busca.ToList(), "Id", "Nome");
             return View();
         }
 
@@ -157,12 +167,13 @@ namespace Sergio.Saude.Web.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
 
                     return RedirectToAction("Index", "Home");
                 }

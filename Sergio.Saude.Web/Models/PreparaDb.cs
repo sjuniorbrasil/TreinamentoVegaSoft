@@ -9,7 +9,8 @@ using Sergio.Saude.Web.Models;
 namespace Sergio.Saude.Web.Models
 {
     
-    public class PreparaDb : DropCreateDatabaseAlways<ApplicationDbContext> /*IDatabaseInitializer<object>*/
+    //public class PreparaDb : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class PreparaDb : CreateDatabaseIfNotExists<ApplicationDbContext>/*IDatabaseInitializer<object>*/
     {
         SaudeWebDbContexto db = new SaudeWebDbContexto();
 
