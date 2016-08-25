@@ -42,7 +42,9 @@ namespace Sergio.Saude.Web.Models
             return new ApplicationDbContext();
         }
 
-       
+        public System.Data.Entity.DbSet<Sergio.Saude.Dominio.Medico> Medicos { get; set; }
+
+
 
         //public System.Data.Entity.DbSet<Sergio.Saude.Web.Models.ApplicationUser> ApplicationUsers { get; set; }
     }

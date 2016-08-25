@@ -55,9 +55,13 @@
     <Compile Include="Dados.cs" />
     <Compile Include="Interface\IRepositorio.cs" />
     <Compile Include="Interface\IUnitOfWok.cs" />
-    <Compile Include="Migrations\201608172222329_1.cs" />
-    <Compile Include="Migrations\201608172222329_1.Designer.cs">
-      <DependentUpon>201608172222329_1.cs</DependentUpon>
+    <Compile Include="Migrations\201608242330545_agenda.cs" />
+    <Compile Include="Migrations\201608242330545_agenda.Designer.cs">
+      <DependentUpon>201608242330545_agenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608242343109_clientefuncionarioAgenda.cs" />
+    <Compile Include="Migrations\201608242343109_clientefuncionarioAgenda.Designer.cs">
+      <DependentUpon>201608242343109_clientefuncionarioAgenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,8 +81,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608172222329_1.resx">
-      <DependentUpon>201608172222329_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608242330545_agenda.resx">
+      <DependentUpon>201608242330545_agenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608242343109_clientefuncionarioAgenda.resx">
+      <DependentUpon>201608242343109_clientefuncionarioAgenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

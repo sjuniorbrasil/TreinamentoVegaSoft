@@ -12,6 +12,10 @@ namespace Sergio.Saude.Dominio
             public string Crm { get; set; }
 
             public string Especialidade { get; set; }
+
+
+        public ICollection<Agenda> Agendamentos { get; set; }
+
         }
 }
 

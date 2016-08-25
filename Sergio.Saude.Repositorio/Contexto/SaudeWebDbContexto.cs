@@ -20,6 +20,8 @@ namespace Sergio.Saude.Repositorio.Contexto
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
 
+        //ublic DbSet<Agenda> Agendamentos { get; set; }
+
         public SaudeWebDbContexto() : base("SaudeWebContexto")
         {
             //Database.SetInitializer(new PreparaDb());
@@ -61,6 +63,8 @@ namespace Sergio.Saude.Repositorio.Contexto
         {
             ChangeTracker.Entries().ToList().ForEach(entry => entry.State = EntityState.Unchanged);
         }
+
+        public System.Data.Entity.DbSet<Sergio.Saude.Dominio.Agenda> Agenda { get; set; }
 
         //private void CarregaBancoSistema()
         //public static void CarregaBancoSistema(SaudeWebDbContexto contexto)

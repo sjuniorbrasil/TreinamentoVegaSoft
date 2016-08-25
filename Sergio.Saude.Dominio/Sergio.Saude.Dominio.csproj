@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agenda.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="Medico.cs" />
