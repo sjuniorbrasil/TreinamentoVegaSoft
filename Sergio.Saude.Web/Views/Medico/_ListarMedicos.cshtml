@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Sergio.Saude.Dominio.Medico>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Crm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialidade)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidade)
+            </td>
+            <td>
+                @Html.ActionLink("Alterar", "Alterar", new { id = item.Id }) |
+                @*@Html.ActionLink("Detalhes", "Detalhes", new {id = item.Id}) |*@
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.Id })
+            </td>
+        </tr>
+
+    }
+    
+
+</table>
+
+<nav>
+    <ul class="pager">
+        <li>
+            <a href="#" onclick="pagina(-1)">Anterior</a>
+            <a href="#" onclick="pagina(1)">Próximo</a>
+        </li>
+    </ul>
+</nav>

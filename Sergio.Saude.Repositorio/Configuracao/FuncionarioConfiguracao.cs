@@ -12,6 +12,7 @@ namespace Sergio.Saude.Repositorio.Configuracao
     {
         public FuncionarioConfiguracao()
         {
+            ToTable("Funcionarios");
             HasKey(m => m.Id);
 
             Property(m => m.Nome).IsRequired().HasMaxLength(100);

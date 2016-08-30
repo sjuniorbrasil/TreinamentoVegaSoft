@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Faker.NET4">
+      <HintPath>..\Faker.NET4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -175,7 +178,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedicoController.cs" />
-    <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -269,16 +271,12 @@
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
     <Content Include="Views\Teste\Index.cshtml" />
-    <Content Include="Views\Medicos\Create.cshtml" />
-    <Content Include="Views\Medicos\Delete.cshtml" />
-    <Content Include="Views\Medicos\Details.cshtml" />
-    <Content Include="Views\Medicos\Edit.cshtml" />
-    <Content Include="Views\Medicos\Index.cshtml" />
     <Content Include="Views\Agenda\Create.cshtml" />
     <Content Include="Views\Agenda\Delete.cshtml" />
     <Content Include="Views\Agenda\Details.cshtml" />
     <Content Include="Views\Agenda\Edit.cshtml" />
     <Content Include="Views\Agenda\Index.cshtml" />
+    <Content Include="Views\Medico\_ListarMedicos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -28,9 +28,32 @@ namespace Sergio.Saude.Web.Controllers
         }
 
         // GET: Medico
-        public ActionResult Index()
+        public ActionResult Index(/*int pagina = 2, int registros = 10*/)
         {
-            return View(_repositorio.ObterTodos());
+            return View();
+            //return View(_repositorio.ObterTodos().OrderBy(x => x.Id).Skip((pagina - 1) * registros).Take(registros));
+        }
+        public PartialViewResult Listar(Medico medicoFiltro, int pagina = 1, int registros = 10)
+        {
+            var medicos = _repositorio.ObterTodos();
+            if(!String.IsNullOrWhiteSpace(medicoFiltro.Nome))
+            {
+                medicos = medicos.Where(x => x.Nome.Contains(medicoFiltro.Nome));
+            }
+            if (!String.IsNullOrWhiteSpace(medicoFiltro.Especialidade))
+            {
+                medicos = medicos.Where(x => x.Especialidade.Contains(medicoFiltro.Especialidade));
+            }
+
+            if (pagina == 0)
+            {
+                pagina = 1;
+            }
+            var medicosFiltrados = medicos.OrderBy(x => x.Id).Skip((pagina - 1) * registros).Take(registros);
+
+
+            return PartialView("_ListarMedicos", medicosFiltrados.ToList());
+
         }
 
         //private static List<Medico> ListaMedicos()

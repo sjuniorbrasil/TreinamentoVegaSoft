@@ -5,6 +5,8 @@ using System.Data.Entity;
 using Sergio.Saude.Repositorio;
 using Sergio.Saude.Repositorio.Contexto;
 using Sergio.Saude.Web.Models;
+using Sergio.Saude.Dominio;
+using System.Collections.Generic;
 
 namespace Sergio.Saude.Web.Models
 {
@@ -20,6 +22,7 @@ namespace Sergio.Saude.Web.Models
             {
                 CriarUsuario(contexto);
                 //CarregaBancoSistema(db);
+                CarregarMedicos(db);
             }
             catch (Exception E)
             {
@@ -27,6 +30,28 @@ namespace Sergio.Saude.Web.Models
                 throw new Exception(E.Message + Environment.NewLine + E.StackTrace);
             }
             base.Seed(contexto);
+        }
+
+        private void CarregarMedicos(SaudeWebDbContexto db)
+        {
+
+            List<Medico> medicos = new List<Medico>();
+            for (int i = 0; i < 1000; i++)
+            {
+                Medico medico = new Medico();
+
+                medico.Nome = Faker.Name.NomeCompleto();
+                medico.Email = Faker.Internet.Email();
+                medico.Crm = Faker.RandomNumber.Next(10000).ToString();
+
+                medicos.Add(medico);
+
+
+                
+
+            }
+            medicos.ForEach(m => db.Medicos.Add(m));//cada registro é um item da coleção
+            db.Commit();
         }
 
         private static void CriarUsuario(ApplicationDbContext contexto)

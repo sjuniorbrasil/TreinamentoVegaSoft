@@ -149,7 +149,7 @@ namespace Sergio.Saude.Web.Controllers
             RepositorioCliente repositorio = new RepositorioCliente(contexto);
             //passar o viewbagclienteID
             var busca = repositorio.ObterTodos().Select(x => new { Id = x.Id, Nome = x.Nome });
-            ViewBag.Clientes =new SelectList(busca.ToList(), "Id", "Nome");
+            //ViewBag.Clientes =new SelectList(busca.ToList(), "Id", "Nome");
             return View();
         }
 

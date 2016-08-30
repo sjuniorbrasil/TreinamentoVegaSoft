@@ -7,52 +7,70 @@
 <h2>Lista Médico</h2>
 
 <p>
-    @Html.ActionLink("Novo", "Incluir")
+    <a href="@Url.Action("Incluir")" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Novo
+    </a>
 </p>
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Crm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Especialidade)
-        </th>
-        <th></th>
-    </tr>
+<form class="form-inline">
+    <input type="hidden" name="pagina" value="1" />
+    <input type="hidden" name="registros" value="10" /> 
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Crm)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Especialidade)
-            </td>
-            <td>
-                @Html.ActionLink("Alterar", "Alterar", new {id = item.Id}) |
-                @*@Html.ActionLink("Detalhes", "Detalhes", new {id = item.Id}) |*@
-                @Html.ActionLink("Excluir", "Excluir", new {id = item.Id})
-            </td>
-        </tr>
+    <div class="form-group">
+        <label class="sr-only">Nome</label>
+        <input type="text" name="Nome" class="form-control" placeholder="Pesquisar Médico">
+    </div>
+    <div class="form-group">
+        <label class="sr-only">Especialidade</label>
+        <input type="text" name="Especialidade" class="form-control" placeholder="Pesquisar Especialidade">
+    </div>
+    <button type="button" id="btnPesquisar" class="btn btn-default">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        Pesquisar
+    </button>   
+</form>
+
+
+
+
+<div id="ListagemMedicos"></div>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(configurarControles);
+
+        function configurarControles() {
+            $("#btnPesquisar").click(listarMedico);
+            listarMedico();
+        }
+
+
+        function pagina(valor) {
+
+            var paginaElemento = $("input[name='pagina']");
+
+            var paginaAtual = parseInt(paginaElemento.val());
+
+            
+
+                paginaElemento.val(paginaAtual + valor);
+           
+
+            listarMedico();
+           
+        }
+
+        function listarMedico() {
+            $.ajaxSetup({ cache: false });
+            $("#ListagemMedicos").load("@Url.Action("Listar")", $("form").serialize());
+        }
+
+    </script>
+    
+
+    
+    
     }
 
-</table>
