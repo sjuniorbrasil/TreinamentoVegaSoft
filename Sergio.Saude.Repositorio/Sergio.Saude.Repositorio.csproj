@@ -49,19 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracao\ConsultaConfiguracao.cs" />
+    <Compile Include="Configuracao\ConsultaExameConfiguracao.cs" />
+    <Compile Include="Configuracao\ExameConfiguracao.cs" />
     <Compile Include="Configuracao\FuncionarioConfiguracao.cs" />
     <Compile Include="Configuracao\MedicoConfiguracao.cs" />
     <Compile Include="Contexto\SaudeWebDbContexto.cs" />
     <Compile Include="Dados.cs" />
     <Compile Include="Interface\IRepositorio.cs" />
     <Compile Include="Interface\IUnitOfWok.cs" />
-    <Compile Include="Migrations\201608242330545_agenda.cs" />
-    <Compile Include="Migrations\201608242330545_agenda.Designer.cs">
-      <DependentUpon>201608242330545_agenda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608242343109_clientefuncionarioAgenda.cs" />
-    <Compile Include="Migrations\201608242343109_clientefuncionarioAgenda.Designer.cs">
-      <DependentUpon>201608242343109_clientefuncionarioAgenda.cs</DependentUpon>
+    <Compile Include="Migrations\201609030023125_987875.cs" />
+    <Compile Include="Migrations\201609030023125_987875.Designer.cs">
+      <DependentUpon>201609030023125_987875.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,11 +80,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608242330545_agenda.resx">
-      <DependentUpon>201608242330545_agenda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608242343109_clientefuncionarioAgenda.resx">
-      <DependentUpon>201608242343109_clientefuncionarioAgenda.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609030023125_987875.resx">
+      <DependentUpon>201609030023125_987875.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

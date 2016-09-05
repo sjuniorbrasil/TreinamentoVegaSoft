@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Sergio.Saude.Dominio;
 using Sergio.Saude.Repositorio.Interface;
 using Sergio.Saude.Repositorio.Configuracao;
+using Prosige_SaudeOc.Models;
 
 namespace Sergio.Saude.Repositorio.Contexto
 {
@@ -20,7 +21,13 @@ namespace Sergio.Saude.Repositorio.Contexto
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
 
-        //ublic DbSet<Agenda> Agendamentos { get; set; }
+        public DbSet<Consulta> Consultas { get; set; }
+
+        public DbSet<ConsultaExame> ConsultaExames { get; set; }
+
+        public DbSet<Exame> Exames { get; set; }
+
+     
 
         public SaudeWebDbContexto() : base("SaudeWebContexto")
         {
@@ -41,9 +48,13 @@ namespace Sergio.Saude.Repositorio.Contexto
             modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(150));
 
             //base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Configurations.Add(new ExameConfiguracao());
             modelBuilder.Configurations.Add(new MedicoConfiguracao());
             modelBuilder.Configurations.Add(new FuncionarioConfiguracao());//map mapeamento
+            //modelBuilder.Configurations.Add(new ConsultaConfiguracao());
+            //modelBuilder.Configurations.Add(new ConsultaExameConfiguracao());
+            
+
         }
 
         public int Commit()
@@ -64,7 +75,7 @@ namespace Sergio.Saude.Repositorio.Contexto
             ChangeTracker.Entries().ToList().ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
-        public System.Data.Entity.DbSet<Sergio.Saude.Dominio.Agenda> Agenda { get; set; }
+        
 
         //private void CarregaBancoSistema()
         //public static void CarregaBancoSistema(SaudeWebDbContexto contexto)

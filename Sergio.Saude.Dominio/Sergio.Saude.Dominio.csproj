@@ -49,8 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agenda.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Consulta.cs" />
+    <Compile Include="ConsultaExame.cs" />
+    <Compile Include="Exame.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="Medico.cs" />
     <Compile Include="Pessoa.cs" />
@@ -58,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,7 +14,7 @@ namespace Sergio.Saude.Dominio
             public string Especialidade { get; set; }
 
 
-        public ICollection<Agenda> Agendamentos { get; set; }
+        
 
         }
 }

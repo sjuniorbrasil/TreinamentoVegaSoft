@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Prosige_SaudeOc.Models.ConsultaExame">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAgAAAAAgAAAEAACAAAAEAQAAAAAAAgIAAAAABgA=</HashCode>
+      <FileName>ConsultaExame.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Consulta" />
+      <Property Name="Exame" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sergio.Saude.Dominio.Exame">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prosige_SaudeOc.Models.Consulta">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCABAAAIQAAAAACBCAAIQAEAAACAAAAAAAAQCAAgA=</HashCode>
+      <FileName>Consulta.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ConsultaExames" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

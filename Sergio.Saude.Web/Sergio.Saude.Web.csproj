@@ -171,7 +171,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
@@ -182,6 +181,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609030021552_6546546.cs" />
+    <Compile Include="Migrations\201609030021552_6546546.Designer.cs">
+      <DependentUpon>201609030021552_6546546.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -271,11 +275,6 @@
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
     <Content Include="Views\Teste\Index.cshtml" />
-    <Content Include="Views\Agenda\Create.cshtml" />
-    <Content Include="Views\Agenda\Delete.cshtml" />
-    <Content Include="Views\Agenda\Details.cshtml" />
-    <Content Include="Views\Agenda\Edit.cshtml" />
-    <Content Include="Views\Agenda\Index.cshtml" />
     <Content Include="Views\Medico\_ListarMedicos.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +297,11 @@
       <Project>{c093cb26-2112-47f8-a764-32147ed7c64e}</Project>
       <Name>Sergio.Saude.Repositorio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201609030021552_6546546.resx">
+      <DependentUpon>201609030021552_6546546.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

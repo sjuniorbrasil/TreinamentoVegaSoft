@@ -7,6 +7,7 @@ using Sergio.Saude.Repositorio.Contexto;
 using Sergio.Saude.Web.Models;
 using Sergio.Saude.Dominio;
 using System.Collections.Generic;
+using Prosige_SaudeOc.Models;
 
 namespace Sergio.Saude.Web.Models
 {
@@ -20,9 +21,13 @@ namespace Sergio.Saude.Web.Models
         {
             try
             {
+                CarregarExames(db);
                 CriarUsuario(contexto);
                 //CarregaBancoSistema(db);
                 CarregarMedicos(db);
+                CarregaConsulta(db);
+                CarregarConsultaExame(db);
+                
             }
             catch (Exception E)
             {
@@ -30,6 +35,53 @@ namespace Sergio.Saude.Web.Models
                 throw new Exception(E.Message + Environment.NewLine + E.StackTrace);
             }
             base.Seed(contexto);
+        }
+
+        private void CarregarExames(SaudeWebDbContexto db)
+        {
+            List<Exame> exames = new List<Exame> {
+
+                new Exame { Descricao = "Audiometria" , Valor = 50.00m },
+                new Exame { Descricao = "Visão" , Valor = 10.00m },
+                new Exame { Descricao = "Fisico" , Valor = 90.00m },
+                new Exame { Descricao = "Cardiaco" , Valor = 20.00m },
+                
+            };
+            exames.ForEach(x => db.Exames.Add(x));
+            db.Commit();
+        }
+        private void CarregarConsultaExame(SaudeWebDbContexto db)
+        {
+            List<ConsultaExame> consultaExame = new List<ConsultaExame>
+            {
+                new ConsultaExame {Id = 1, ConsultaId = 1, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 10.00m  },
+                new ConsultaExame {Id = 2, ConsultaId = 1, ExameId = 2, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 20.00m  },
+                new ConsultaExame {Id = 1, ConsultaId = 2, ExameId = 3, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 50.00m  },
+                new ConsultaExame {Id = 2, ConsultaId = 2, ExameId = 4, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 60.00m  },
+                new ConsultaExame {Id = 1, ConsultaId = 3, ExameId = 2, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 70.00m  },
+                new ConsultaExame {Id = 2, ConsultaId = 3, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 90.00m  },
+                new ConsultaExame {Id = 1, ConsultaId = 4, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 10.00m  },
+                new ConsultaExame {Id = 2, ConsultaId = 4, ExameId = 4, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 80.00m  },
+                new ConsultaExame {Id = 1, ConsultaId = 4, ExameId = 3, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 90.00m  },
+                new ConsultaExame {Id = 2, ConsultaId = 4, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 50.00m  },
+
+            };
+            consultaExame.ForEach(x => db.ConsultaExames.Add(x));
+            db.Commit();
+        }
+        private void CarregaConsulta(SaudeWebDbContexto db)
+        {
+            List<Consulta> consulta = new List<Consulta>
+            {
+               new Consulta { ClienteId = 1, DataAgendado = new DateTime(2016,10,03), DataConsulta = new DateTime(2016,10,25), FuncionarioId = 1, Id = 1, SituacaoAgenda = 1, ValorConsulta = 100.00m, SituacaoConsulta = 1 },
+               new Consulta { ClienteId = 2, DataAgendado = new DateTime(2016,10,05), DataConsulta = new DateTime(2016,10,20), FuncionarioId = 1, Id = 1, SituacaoAgenda = 1, ValorConsulta = 100.00m, SituacaoConsulta = 1 },
+               new Consulta { ClienteId = 10, DataAgendado = new DateTime(2016,10,15), DataConsulta = new DateTime(2016,10,25), FuncionarioId = 2, Id = 1, SituacaoAgenda = 1, ValorConsulta = 100.00m, SituacaoConsulta = 1 },
+               new Consulta { ClienteId = 21, DataAgendado = new DateTime(2016,10,25), DataConsulta = new DateTime(2016,10,20), FuncionarioId = 2, Id = 1, SituacaoAgenda = 1, ValorConsulta = 100.00m, SituacaoConsulta = 1 },
+               new Consulta { ClienteId = 101, DataAgendado = new DateTime(2016,10,25), DataConsulta = new DateTime(2016,10,15), FuncionarioId = 3, Id = 1, SituacaoAgenda = 1, ValorConsulta = 100.00m, SituacaoConsulta = 1 },
+
+            };
+            consulta.ForEach(x => db.Consultas.Add(x));
+            db.Commit();
         }
 
         private void CarregarMedicos(SaudeWebDbContexto db)
@@ -70,7 +122,7 @@ namespace Sergio.Saude.Web.Models
             // Popular Permissões
 
             // Popular Usuarios
-            var adm = new ApplicationUser() { UserName = "teste@gmail.com", Email = "teste@gmail.com" };
+            var adm = new ApplicationUser() { UserName = "teste@gmail.com", Email = "teste@gmail.com", Cidade = "1" };
             // Atribuir papeis aos usuario/permissões
             if ((userManager.Create(adm, "Sergio@2016")).Succeeded)
             {

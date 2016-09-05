@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using Sergio.Saude.Web.Models;
+using System.Data.Entity;
 
 [assembly: OwinStartupAttribute(typeof(Sergio.Saude.Web.Startup))]
 namespace Sergio.Saude.Web
@@ -8,6 +10,7 @@ namespace Sergio.Saude.Web
     {
         public void Configuration(IAppBuilder app)
         {
+            
             ConfigureAuth(app);
         }
     }

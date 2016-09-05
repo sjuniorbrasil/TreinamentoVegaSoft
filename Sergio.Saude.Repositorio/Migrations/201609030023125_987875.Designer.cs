@@ -7,13 +7,13 @@ namespace Sergio.Saude.Repositorio.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class agenda : IMigrationMetadata
+    public sealed partial class _987875 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(agenda));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_987875));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608242330545_agenda"; }
+            get { return "201609030023125_987875"; }
         }
         
         string IMigrationMetadata.Source
