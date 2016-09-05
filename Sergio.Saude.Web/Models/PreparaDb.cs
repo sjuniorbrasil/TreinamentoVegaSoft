@@ -52,21 +52,21 @@ namespace Sergio.Saude.Web.Models
         }
         private void CarregarConsultaExame(SaudeWebDbContexto db)
         {
-            List<ConsultaExame> consultaExame = new List<ConsultaExame>
+            List<ConsultaExame> CarregarconsultaExame = new List<ConsultaExame>
             {
-                new ConsultaExame {Id = 1, ConsultaId = 1, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 10.00m  },
-                new ConsultaExame {Id = 2, ConsultaId = 1, ExameId = 2, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 20.00m  },
-                new ConsultaExame {Id = 1, ConsultaId = 2, ExameId = 3, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 50.00m  },
-                new ConsultaExame {Id = 2, ConsultaId = 2, ExameId = 4, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 60.00m  },
-                new ConsultaExame {Id = 1, ConsultaId = 3, ExameId = 2, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 70.00m  },
-                new ConsultaExame {Id = 2, ConsultaId = 3, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 90.00m  },
-                new ConsultaExame {Id = 1, ConsultaId = 4, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 10.00m  },
-                new ConsultaExame {Id = 2, ConsultaId = 4, ExameId = 4, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 80.00m  },
-                new ConsultaExame {Id = 1, ConsultaId = 4, ExameId = 3, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 90.00m  },
-                new ConsultaExame {Id = 2, ConsultaId = 4, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), PessoaId = 1 , SituacaoExame = 1, Valor = 50.00m  },
+                new ConsultaExame { ConsultaId = 1, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 10.00m,  },
+                new ConsultaExame { ConsultaId = 1, ExameId = 2, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 20.00m  },
+                new ConsultaExame { ConsultaId = 2, ExameId = 3, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 50.00m  },
+                new ConsultaExame { ConsultaId = 2, ExameId = 4, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 60.00m  },
+                new ConsultaExame { ConsultaId = 3, ExameId = 2, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 70.00m  },
+                new ConsultaExame { ConsultaId = 3, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 90.00m  },
+                new ConsultaExame { ConsultaId = 4, ExameId = 1, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 10.00m  },
+                new ConsultaExame { ConsultaId = 4, ExameId = 4, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 80.00m  },
+                new ConsultaExame { ConsultaId = 4, ExameId = 3, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 90.00m  },
+                new ConsultaExame { ConsultaId = 4, ExameId = 2, DataEmissao = new DateTime(2016,10,25), DataColeta = new DateTime(2016,10,25), ClienteId = 1 , SituacaoExame = 1, Valor = 50.00m  },
 
             };
-            consultaExame.ForEach(x => db.ConsultaExames.Add(x));
+            CarregarconsultaExame.ForEach(x => db.ConsultaExames.Add(x));
             db.Commit();
         }
         private void CarregaConsulta(SaudeWebDbContexto db)
@@ -88,7 +88,7 @@ namespace Sergio.Saude.Web.Models
         {
 
             List<Medico> medicos = new List<Medico>();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 20; i++)
             {
                 Medico medico = new Medico();
 
