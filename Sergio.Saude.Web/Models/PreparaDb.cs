@@ -26,7 +26,7 @@ namespace Sergio.Saude.Web.Models
                 //CarregaBancoSistema(db);
                 CarregarMedicos(db);
                 CarregaConsulta(db);
-                CarregarConsultaExame(db);
+               //CarregarConsultaExame(db);
                 
             }
             catch (Exception E)

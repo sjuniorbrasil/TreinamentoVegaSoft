@@ -13,7 +13,7 @@ namespace Sergio.Saude.Repositorio.Configuracao
         public ConsultaExameConfiguracao()
         {
             ToTable("ConsultaExames");
-            HasKey(m => m.Id);
+            HasKey(m => m.ConsultaExameId);
             
 
 

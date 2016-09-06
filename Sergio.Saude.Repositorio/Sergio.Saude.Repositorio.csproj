@@ -58,9 +58,9 @@
     <Compile Include="Dados.cs" />
     <Compile Include="Interface\IRepositorio.cs" />
     <Compile Include="Interface\IUnitOfWok.cs" />
-    <Compile Include="Migrations\201609030023125_987875.cs" />
-    <Compile Include="Migrations\201609030023125_987875.Designer.cs">
-      <DependentUpon>201609030023125_987875.cs</DependentUpon>
+    <Compile Include="Migrations\201609060013519_65465746.cs" />
+    <Compile Include="Migrations\201609060013519_65465746.Designer.cs">
+      <DependentUpon>201609060013519_65465746.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +80,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609030023125_987875.resx">
-      <DependentUpon>201609030023125_987875.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609060013519_65465746.resx">
+      <DependentUpon>201609060013519_65465746.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

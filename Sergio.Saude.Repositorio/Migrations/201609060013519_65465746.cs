@@ -3,7 +3,7 @@ namespace Sergio.Saude.Repositorio.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _987875 : DbMigration
+    public partial class _65465746 : DbMigration
     {
         public override void Up()
         {
@@ -22,25 +22,24 @@ namespace Sergio.Saude.Repositorio.Migrations
                 "dbo.ConsultaExame",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        ConsultaExameId = c.Int(nullable: false, identity: true),
                         ConsultaId = c.Int(nullable: false),
                         ExameId = c.Int(nullable: false),
-                        PessoaId = c.Int(nullable: false),
-                        Valor = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        DataColeta = c.DateTime(nullable: false),
-                        DataEmissao = c.DateTime(nullable: false),
-                        ProximaConsulta = c.DateTime(nullable: false),
+                        ClienteId = c.Int(nullable: false),
+                        Valor = c.Decimal(precision: 18, scale: 2),
+                        DataColeta = c.DateTime(),
+                        DataEmissao = c.DateTime(),
+                        ProximaConsulta = c.DateTime(),
                         SituacaoExame = c.Int(nullable: false),
                         Observacao = c.String(maxLength: 150, unicode: false),
-                        Cliente_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cliente", t => t.Cliente_Id)
+                .PrimaryKey(t => t.ConsultaExameId)
+                .ForeignKey("dbo.Cliente", t => t.ClienteId)
                 .ForeignKey("dbo.Consulta", t => t.ConsultaId)
                 .ForeignKey("dbo.Exames", t => t.ExameId)
                 .Index(t => t.ConsultaId)
                 .Index(t => t.ExameId)
-                .Index(t => t.Cliente_Id);
+                .Index(t => t.ClienteId);
             
             CreateTable(
                 "dbo.Consulta",
@@ -112,11 +111,11 @@ namespace Sergio.Saude.Repositorio.Migrations
             DropForeignKey("dbo.Funcionarios", "cliente_Id", "dbo.Cliente");
             DropForeignKey("dbo.ConsultaExame", "ConsultaId", "dbo.Consulta");
             DropForeignKey("dbo.Consulta", "Cliente_Id", "dbo.Cliente");
-            DropForeignKey("dbo.ConsultaExame", "Cliente_Id", "dbo.Cliente");
+            DropForeignKey("dbo.ConsultaExame", "ClienteId", "dbo.Cliente");
             DropIndex("dbo.Funcionarios", new[] { "cliente_Id" });
             DropIndex("dbo.Consulta", new[] { "Funcionario_Id" });
             DropIndex("dbo.Consulta", new[] { "Cliente_Id" });
-            DropIndex("dbo.ConsultaExame", new[] { "Cliente_Id" });
+            DropIndex("dbo.ConsultaExame", new[] { "ClienteId" });
             DropIndex("dbo.ConsultaExame", new[] { "ExameId" });
             DropIndex("dbo.ConsultaExame", new[] { "ConsultaId" });
             DropTable("dbo.Medicos");

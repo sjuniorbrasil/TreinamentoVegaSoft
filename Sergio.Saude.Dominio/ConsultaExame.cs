@@ -12,8 +12,9 @@ namespace Prosige_SaudeOc.Models
     public class ConsultaExame
     {
         [Key Column(Order = 0)]
-        public int Id { get; set; }  
+        public int ConsultaExameId { get; set; }  
 
+        
         public int ConsultaId { get; set; }
 
         [Display(Name = "Exame")]
@@ -24,16 +25,16 @@ namespace Prosige_SaudeOc.Models
         public int ClienteId { get; set; }
 
         [Display(Name = "Valor")]
-        public decimal Valor { get; set; }
+        public decimal? Valor { get; set; }
 
         [Display(Name = "Coleta")]
-        public DateTime DataColeta { get; set; }
+        public DateTime? DataColeta { get; set; }
 
         [Display(Name = "Emissão")]
-        public DateTime DataEmissao { get; set; }
+        public DateTime? DataEmissao { get; set; }
 
         [Display(Name = "Próxima Consulta")]
-        public DateTime ProximaConsulta { get; set; }
+        public DateTime? ProximaConsulta { get; set; }
 
         [Display(Name = "Situação")]
         public int SituacaoExame { get; set; }
@@ -46,7 +47,7 @@ namespace Prosige_SaudeOc.Models
         public Cliente Cliente { get; set; }
 
         
-
+        [ForeignKey("ConsultaId")]
         public Consulta Consulta { get; set; }
 
         public Exame Exame { get; set; }

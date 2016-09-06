@@ -3,7 +3,7 @@ namespace Sergio.Saude.Web.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _6546546 : DbMigration
+    public partial class _654546 : DbMigration
     {
         public override void Up()
         {
