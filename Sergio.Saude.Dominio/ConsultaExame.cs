@@ -22,7 +22,7 @@ namespace Prosige_SaudeOc.Models
 
 
         [Display(Name = "Médico Analista")]
-        public int ClienteId { get; set; }
+        public int MedicoId { get; set; }
 
         [Display(Name = "Valor")]
         public decimal? Valor { get; set; }
